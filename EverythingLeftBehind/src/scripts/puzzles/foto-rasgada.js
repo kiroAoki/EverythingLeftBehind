@@ -1,3 +1,5 @@
+import { errorSound, successSound, transitionSound } from '../constants.js';
+
 export default class PuzzleGame {
     constructor(scene, imageKey, inventoryInstance, puzzleSize = 200, rows = 3, cols = 3) {
         this.inventory = inventoryInstance;

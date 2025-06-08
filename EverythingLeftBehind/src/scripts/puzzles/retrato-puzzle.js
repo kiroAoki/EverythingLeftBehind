@@ -1,3 +1,5 @@
+import { errorSound, successSound, transitionSound } from '../constants.js';
+
 export default class RetratoPuzzle {
     constructor(scene, correctDate) {
         this.scene = scene;
@@ -158,6 +160,7 @@ export default class RetratoPuzzle {
 
     checkAnswer() {
     if (this.selectedDate === this.correctDate) {
+        successSound.play();
         this.scene.showTextBoxDialogue("É isso! Foi nesse dia...");
         this.scene.gameState.retratoCompleted = true;
         this.close();
@@ -165,6 +168,7 @@ export default class RetratoPuzzle {
         // Emite um evento específico para a conclusão do puzzle do retrato
         this.scene.events.emit('retratoPuzzleCompleted');
     } else {
+        errorSound.play();
         this.scene.showTextBoxDialogue("Não foi nessa data... Eu preciso achar algo que me lembre disso.");
     }
 }
@@ -185,6 +189,8 @@ export default class RetratoPuzzle {
         if (this.overlay) {
             this.overlay.destroy();
         }
+
+        transitionSound.play();
         
         this.active = false;
         this.scene.setInteractionsEnabled(true);

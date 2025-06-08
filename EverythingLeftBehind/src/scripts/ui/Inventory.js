@@ -1,4 +1,4 @@
-import { inventorySound } from '../constants.js';
+import { inventorySound, itemSound } from '../constants.js';
 
 export default class Inventory {
     constructor(scene) {
@@ -221,6 +221,7 @@ addUsableItem(key, image, useCallback) {
 }
 
     addItem(itemKey, action = null) {
+        itemSound.play();
     const emptySlot = this.slots.find(slot => slot.item === null);
     if (emptySlot) {
         const item = this.scene.add.image(

@@ -1,4 +1,6 @@
 // CameraPuzzle.js - Versão Ultra-Compacta
+import { errorSound, successSound, transitionSound } from '../constants.js';
+
 export default class CameraPuzzle {
     constructor(scene) {
         this.scene = scene;
